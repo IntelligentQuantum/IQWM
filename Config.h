@@ -1,6 +1,6 @@
 /* Constants */
 #define TERMINAL "IQ-T"
-#define TERMCLASS "IQ-T"
+#define TERMCLASS "IQ-T-C"
 
 /* appearance */
 static unsigned int borderpx        = 1;        /* border pixel of windows */
@@ -222,9 +222,9 @@ static Key keys[] =
 	{ MODKEY|ShiftMask,		                    XK_Print,	            spawn,		                SHCMD("iqmenurecord kill") },
 	{ MODKEY,			                        XK_Delete,	            spawn,		                SHCMD("iqmenurecord kill") },
 	{ MODKEY,			                        XK_Scroll_Lock,	        spawn,		                SHCMD("killall screenkey || screenkey &") },
-    { MODKEY|XK_Alt_L,                          XK_z,                   spawn,                      SHCMD("setxkbmap de") },
-    { MODKEY|XK_Alt_L,                          XK_x,                   spawn,                      SHCMD("setxkbmap us") },
-    { MODKEY|XK_Alt_L,                          XK_c,                   spawn,                      SHCMD("setxkbmap ir") },
+    { MODKEY|ShiftMask,                         XK_z,                   spawn,                    	SHCMD("setxkbmap de") },
+    { MODKEY|ShiftMask,                         XK_x,                   spawn,                      SHCMD("setxkbmap us") },
+    { MODKEY|ShiftMask,                         XK_Delete,              spawn,                      SHCMD("setxkbmap ir") },
 
     { 0,				                        XK_Print,	            spawn,		                SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
     { 0,                                        XF86XK_AudioMute,		spawn,		                SHCMD("pamixer -t; kill -44 $(pidof IQ-BLOCKS)") },
@@ -283,7 +283,7 @@ static Button buttons[] =
 	{ ClkStatusText,        0,              Button5,        sigiqblocks,   {.i = 5} },
 	{ ClkStatusText,        ShiftMask,      Button1,        sigiqblocks,   {.i = 6} },
 #endif
-	{ ClkStatusText,        ShiftMask,      Button3,        spawn,          SHCMD(TERMINAL " -e nvim ~/.local/src/IQ-BLOCKS/config.h") },
+	{ ClkStatusText,        ShiftMask,      Button3,        spawn,          SHCMD(TERMINAL " -e nvim ~/.local/src/IQ-BLOCKS/Config.h") },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        defaultgaps,	{0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
