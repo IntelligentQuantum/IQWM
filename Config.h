@@ -133,18 +133,7 @@ ResourcePref resources[] =
 static Key keys[] =
 {
 	/* modifier                                 key                     function                    argument */
-	STACKKEYS(MODKEY,                                                   focus)
-	STACKKEYS(MODKEY|ShiftMask,                                         push)
 	{ MODKEY,			                        XK_grave,	            spawn,	                    SHCMD("iqmenuunicode") },
-	TAGKEYS(			                        XK_1,		            0)
-	TAGKEYS(			                        XK_2,		            1)
-	TAGKEYS(			                        XK_3,		            2)
-	TAGKEYS(			                        XK_4,		            3)
-	TAGKEYS(			                        XK_5,		            4)
-	TAGKEYS(			                        XK_6,		            5)
-	TAGKEYS(			                        XK_7,		            6)
-	TAGKEYS(			                        XK_8,		            7)
-	TAGKEYS(			                        XK_9,		            8)
     { MODKEY,			                        XK_0,		            view,		                {.ui = ~0 } },
 	{ MODKEY|ShiftMask,		                    XK_0,		            tag,		                {.ui = ~0 } },
 	{ MODKEY,			                        XK_minus,	            spawn,		                SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof IQ-BLOCKS)") },
@@ -214,7 +203,7 @@ static Key keys[] =
 	{ MODKEY|ShiftMask,		                    XK_Page_Up,         	shifttag,	                { .i = -1 } },
 	{ MODKEY,			                        XK_Page_Down,	        shiftview,	                { .i = +1 } },
 	{ MODKEY|ShiftMask,		                    XK_Page_Down,	        shifttag,	                { .i = +1 } },
-	{ MODKEY,			                        XK_Insert,	            spawn,		                SHCMD("xdotool type $(grep -v '^#' ~/.local/share/larbs/snippets | IQ-MENU -i -l 50 | cut -d' ' -f1)") },
+	{ MODKEY,			                        XK_Insert,	            spawn,		                SHCMD("xdotool type $(grep -v '^#' ~/.local/share/IQ-IS/snippets | IQ-MENU -i -l 50 | cut -d' ' -f1)") },
 	{ MODKEY,			                        XK_F1,		            spawn,		                SHCMD("groff -mom /usr/local/share/IQ-WM/IQ-IS.mom -Tpdf | zathura -") },
 	{ MODKEY,			                        XK_F2,		            spawn,		                SHCMD("tutorialvids") },
 	{ MODKEY,			                        XK_F3,		            spawn,		                SHCMD("displayselect") },
@@ -228,13 +217,17 @@ static Key keys[] =
 	{ MODKEY,			                        XK_F12,		            spawn,		                SHCMD("remaps & notify-send \\\"⌨️ Keyboard remapping...\\\" \\\"Re-running keyboard defaults for any newly plugged-in keyboards.\\\"") },
 	{ MODKEY,			                        XK_space,	            zoom,		                {0} },
 	{ MODKEY|ShiftMask,		                    XK_space,	            togglefloating,         	{0} },
-	{ 0,				                        XK_Print,	            spawn,		                SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask,			                    XK_Print,	            spawn,		                SHCMD("maimpick") },
 	{ MODKEY,			                        XK_Print,	            spawn,		                SHCMD("iqmenurecord") },
 	{ MODKEY|ShiftMask,		                    XK_Print,	            spawn,		                SHCMD("iqmenurecord kill") },
 	{ MODKEY,			                        XK_Delete,	            spawn,		                SHCMD("iqmenurecord kill") },
 	{ MODKEY,			                        XK_Scroll_Lock,	        spawn,		                SHCMD("killall screenkey || screenkey &") },
-	{ 0,                                        XF86XK_AudioMute,		spawn,		                SHCMD("pamixer -t; kill -44 $(pidof IQ-BLOCKS)") },
+    { MODKEY|XK_Alt_L,                          XK_z,                   spawn,                      SHCMD("setxkbmap de") },
+    { MODKEY|XK_Alt_L,                          XK_x,                   spawn,                      SHCMD("setxkbmap us") },
+    { MODKEY|XK_Alt_L,                          XK_c,                   spawn,                      SHCMD("setxkbmap ir") },
+
+    { 0,				                        XK_Print,	            spawn,		                SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+    { 0,                                        XF86XK_AudioMute,		spawn,		                SHCMD("pamixer -t; kill -44 $(pidof IQ-BLOCKS)") },
 	{ 0,                                        XF86XK_AudioRaiseVolume,spawn,		                SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof IQ-BLOCKS)") },
 	{ 0,                                        XF86XK_AudioLowerVolume,spawn,		                SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof IQ-BLOCKS)") },
 	{ 0,                                        XF86XK_AudioPrev,		spawn,		                SHCMD("mpc prev") },
@@ -261,6 +254,19 @@ static Key keys[] =
 	{ 0,                                        XF86XK_TouchpadOn,		spawn,		                SHCMD("synclient TouchpadOff=0") },
 	{ 0,                                        XF86XK_MonBrightnessUp,	spawn,		                SHCMD("xbacklight -inc 15") },
 	{ 0,                                        XF86XK_MonBrightnessDown,spawn,		                SHCMD("xbacklight -dec 15") },
+
+    STACKKEYS(MODKEY,                                                   focus)
+    STACKKEYS(MODKEY|ShiftMask,                                         push)
+
+    TAGKEYS(			                        XK_1,		            0)
+    TAGKEYS(			                        XK_2,		            1)
+    TAGKEYS(			                        XK_3,		            2)
+    TAGKEYS(			                        XK_4,		            3)
+    TAGKEYS(			                        XK_5,		            4)
+    TAGKEYS(			                        XK_6,		            5)
+    TAGKEYS(			                        XK_7,		            6)
+    TAGKEYS(			                        XK_8,		            7)
+    TAGKEYS(			                        XK_9,		            8)
 };
 
 /* button definitions */
