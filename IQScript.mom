@@ -3,7 +3,7 @@
 .SHIFT_LIST 10p
 ..
 .PARA_SPACE 1m
-.TITLE "\s+(10A Friendly Guide to IQ-IS!\s0"
+.TITLE "\s+(10A Friendly Guide to IQScript!\s0"
 .AUTHOR "\s+5IntelligentQuantum\s0"
 .DOCTYPE    DEFAULT
 .COPYSTYLE  FINAL
@@ -58,7 +58,7 @@ This is to make one-handing on laptops easier.
 .LIST OFF
 .PP
 If you'd like to change any of these keyboard changes, you need only open and change the \f(CWremaps\fP script.
-All custom scripts in IQ-IS are located in \f(CW~/.local/bin/\fP.
+All custom scripts in IQScript are located in \f(CW~/.local/bin/\fP.
 Actually, this should go without saying, but \fIeverything\fP here can easily be changed.
 Below in this document, there is information about where to change programs/components.
 .PP
@@ -74,17 +74,17 @@ You can see what they do and modify them from there.
 I'm sure you can figure it out.
 You can also right click on the module to see what it does.
 .PP
-The program IQ-BLOCKS is what is run to generate the statusbar from those scripts.
-You can edit its config/source code in \f(CW~/.local/src/IQ-BLOCKS/\fP to tell it what scripts/commands you want it to display.
+The program IQBlocks is what is run to generate the statusbar from those scripts.
+You can edit its config/source code in \f(CW~/.local/src/IQBlocks/\fP to tell it what scripts/commands you want it to display.
 .HEADING 2 "Deeper Tutorials"
 .PP
 Press \f(CWmod+F2\fP at any time to get a menu of programs to watch videos about streaming directly from YouTube.
 You can also check the config files for programs which detail a lot of the specific bindings.
 .HEADING 1 "Key Bindings"
 .PP
-The window manager IQ-WM abstractly orders all of your windows into a stack from most important to least based on when you last manipulated it.
-IQ-WM is an easy to use window manager, but you should understand that it makes use of that stack layout.
-If you're not familiar, I recommend you press \f(CWMod+F2\fP and select the "IQ-WM" option to watch my brief tutorial (note that the bindings I discuss in the video are the default IQ-WM binds, which are different (inferior) to those here).
+The window manager IQWM abstractly orders all of your windows into a stack from most important to least based on when you last manipulated it.
+IQWM is an easy to use window manager, but you should understand that it makes use of that stack layout.
+If you're not familiar, I recommend you press \f(CWMod+F2\fP and select the "IQWM" option to watch my brief tutorial (note that the bindings I discuss in the video are the default IQWM binds, which are different (inferior) to those here).
 .PP
 Notice also the case sensitivity of the shortcuts\c
 .FOOTNOTE
@@ -97,7 +97,7 @@ To type capital letters, hold down the \f(CWShift\fP key\(emthat might sound lik
 .ITEM
 \f(CWMod+q\fP \(en Close window
 .ITEM
-\f(CWMod+d\fP \(en IQ-MENU (For running commands or programs without shortcuts)
+\f(CWMod+d\fP \(en IQMenu (For running commands or programs without shortcuts)
 .ITEM
 \f(CWMod+j/k\fP \(en Cycle thru windows by their stack order
 .ITEM
@@ -207,7 +207,7 @@ There are nine tags, active tags are highlighted in the top left.
 .ITEM
 \f(CWMod+F6\fP \(en Transmission torrent client (not installed by default)
 .ITEM
-\f(CWMod+F7\fP \(en Toggle on/off transmission client via IQ-MENU
+\f(CWMod+F7\fP \(en Toggle on/off transmission client via IQMenu
 .ITEM
 \f(CWMod+F8\fP \(en Check mail, if mutt-wizard is configured. (Run \f(CWmw add\fP to set up.)
 .ITEM
@@ -265,7 +265,7 @@ previous recordings as their names are based on their exact times.
 .ITEM
 \f(CWShift+PrintScreen\fP \(en Select area to screenshot
 .ITEM
-\f(CWMod+PrintScreen\fP \(en Opens IQ-MENU menu to select kind of audio/video recording
+\f(CWMod+PrintScreen\fP \(en Opens IQMenu menu to select kind of audio/video recording
 .ITEM
 \f(CWMod+Delete\fP \(en Kills any recording started in the above way.
 .ITEM
@@ -282,7 +282,7 @@ would expect.
 .PP
 Dotfiles/settings files are located in \f(CW~/.config/\fP.
 .PP
-Suckless programs, IQ-WM (the window manager), st (the terminal) and IQ-MENU among others do not have traditional config files, but have their source code location in \f(CW~/.local/src/\fP (press \f(CWrr\fP to jump to that directory).
+Suckless programs, IQWM (the window manager), st (the terminal) and IQMenu among others do not have traditional config files, but have their source code location in \f(CW~/.local/src/\fP (press \f(CWrr\fP to jump to that directory).
 There you can modify their \f(CWConfig.h\fP files or other source code, then \f(CWsudo make install\fP to reinstall.
 .PP
 vim is set to automatically recompile and install these programs whenever you save changes to any \f(CWConfig.h\fP file
@@ -291,7 +291,7 @@ You'll have to restart the program to see its effects obviously.
 .HEADING 1 "Frequently Asked Questions (FAQs)"
 .HEADING 2 "My keyboard isn't working as expected!"
 .PP
-As mentioned above, IQ-WM makes some keyboard changes with the \f(CWremaps\fP script.
+As mentioned above, IQWM makes some keyboard changes with the \f(CWremaps\fP script.
 These settings may override your preferred settings, so you should open this file and comment out troublesome lines if you have issues.
 .HEADING 2 "My audio isn't working!"
 .PP
@@ -311,12 +311,12 @@ The script \f(CWsetbg\fP, if run on an image will set it as the persistent backg
 When using the file manager, you can simply hover over an image name and type \f(CWb\fP and this will run \f(CWsetbg\fP.
 .HEADING 2 "How I change the colorscheme?"
 .PP
-IQ-WM no longer deploys Xresources by default, but check \f(CW~/.config/x11/xresources\fP for a list of color schemes you can activate or add your own. When you save the file, vim will automatically update the colorscheme. If you'd like these colors activated by default on login, there is a line in \f(CW~/.config/x11/xprofile\fP you can uncomment to allow that.
+IQWM no longer deploys Xresources by default, but check \f(CW~/.config/x11/xresources\fP for a list of color schemes you can activate or add your own. When you save the file, vim will automatically update the colorscheme. If you'd like these colors activated by default on login, there is a line in \f(CW~/.config/x11/xprofile\fP you can uncomment to allow that.
 .PP
 Or, if you want to use \f(CWwal\fP to automatically generate colorschemes from your wallpapers, just install it and \f(CWsetbg\fP will automatically detect and run it on startup and wallpaper change.
 .HEADING 2 "How do I set up my email?"
 .PP
-IQ-WM comes with mutt-wizard, which gives the ability to receive and send all your email and keep an offline store of it all in your terminal, without the need for browser.
+IQWM comes with mutt-wizard, which gives the ability to receive and send all your email and keep an offline store of it all in your terminal, without the need for browser.
 You can add email accounts by running \f(CWmw -a your@email.com\fP.
 See \f(CWman mw\fP for all the information you need about mutt-wizard.
 .PP
@@ -330,11 +330,11 @@ By default, mpd, the music daemon assumes that \f(CW~/Music\fP is your music dir
 This can be changed in \f(CW~/.config/mpd/mpd.conf\fP.
 When you add music to your music folder, you may have to run \f(CWmpc up\fP in the terminal to update the database.
 mpd is controlled by ncmpcpp, which is accessible by \f(CWMod+m\fP.
-.HEADING 2 "How do I update IQ-WM?"
+.HEADING 2 "How do I update IQWM?"
 .PP
-IQ-WM is deployed as a git repository in your home directory.
+IQWM is deployed as a git repository in your home directory.
 You can use it as such to fetch, diff and merge changes from the remote repository.
-If you don't want to do that or don't know how to use git, you can actually just rerun the script (as root) and reinstall IQ-WM and it will automatically update an existing install if you select the same username.
+If you don't want to do that or don't know how to use git, you can actually just rerun the script (as root) and reinstall IQWM and it will automatically update an existing install if you select the same username.
 This will overwrite the original config files though, including changes you made for them, but this is an easier brute force approach that will also install any new dependencies.
 .HEADING 1 "Important Links"
 .PP

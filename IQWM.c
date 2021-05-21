@@ -1046,7 +1046,7 @@ Atom getatomprop(Client *c, Atom prop)
 int getiqblockspid()
 {
 	char buf[16];
-	FILE *fp = popen("pidof -s IQ-BLOCKS", "r");
+	FILE *fp = popen("pidof -s IQBlocks", "r");
 	fgets(buf, sizeof(buf), fp);
 	pid_t pid = strtoul(buf, NULL, 10);
 	pclose(fp);
@@ -1596,7 +1596,7 @@ void run(void)
 
 void runAutostart(void)
 {
-	system("killall -q IQ-BLOCKS; IQ-BLOCKS &");
+	system("killall -q IQBlocks; IQBlocks &");
 }
 
 void scan(void)
@@ -1832,7 +1832,7 @@ void setup(void)
 	XChangeProperty(dpy, wmcheckwin, netatom[NetWMCheck], XA_WINDOW, 32,
 		PropModeReplace, (unsigned char *) &wmcheckwin, 1);
 	XChangeProperty(dpy, wmcheckwin, netatom[NetWMName], utf8string, 8,
-		PropModeReplace, (unsigned char *) "IQ-WM", 3);
+		PropModeReplace, (unsigned char *) "IQWM", 3);
 	XChangeProperty(dpy, root, netatom[NetWMCheck], XA_WINDOW, 32,
 		PropModeReplace, (unsigned char *) &wmcheckwin, 1);
 	/* EWMH support per view */
@@ -1935,7 +1935,7 @@ void spawn(const Arg *arg)
 			close(ConnectionNumber(dpy));
 		setsid();
 		execvp(((char **)arg->v)[0], (char **)arg->v);
-		fprintf(stderr, "IQ-WM: execvp %s", ((char **)arg->v)[0]);
+		fprintf(stderr, "IQWM: execvp %s", ((char **)arg->v)[0]);
 		perror(" failed");
 		exit(EXIT_SUCCESS);
 	}
@@ -2131,7 +2131,7 @@ void updatebars(void)
 		.background_pixmap = ParentRelative,
 		.event_mask = ButtonPressMask|ExposureMask
 	};
-	XClassHint ch = {"IQ-WM", "IQ-WM"};
+	XClassHint ch = {"IQWM", "IQWM"};
 	for (m = mons; m; m = m->next)
 	{
 		if (m->barwin)
@@ -2332,7 +2332,7 @@ void updatesizehints(Client *c)
 void updatestatus(void)
 {
 	if (!gettextprop(root, XA_WM_NAME, rawstext, sizeof(rawstext)))
-		strcpy(stext, "IQ-WM-"VERSION);
+		strcpy(stext, "IQWM-"VERSION);
 	else
 		copyvalidchars(stext, rawstext);
 	drawbar(selmon);
@@ -2537,7 +2537,7 @@ int xerror(Display *dpy, XErrorEvent *ee)
 	|| (ee->request_code == X_GrabKey && ee->error_code == BadAccess)
 	|| (ee->request_code == X_CopyArea && ee->error_code == BadDrawable))
 		return 0;
-	fprintf(stderr, "IQ-WM: fatal error: request code=%d, error code=%d\n",
+	fprintf(stderr, "IQWM: fatal error: request code=%d, error code=%d\n",
 		ee->request_code, ee->error_code);
 	return xerrorxlib(dpy, ee); /* may call exit */
 }
@@ -2551,7 +2551,7 @@ int xerrordummy(Display *dpy, XErrorEvent *ee)
  * is already running. */
 int xerrorstart(Display *dpy, XErrorEvent *ee)
 {
-	die("IQ-WM: another window manager is already running");
+	die("IQWM: another window manager is already running");
 	return -1;
 }
 
@@ -2582,7 +2582,7 @@ void resource_load(XrmDatabase db, char *name, enum resource_type rtype, void *d
 	char *type;
 	XrmValue ret;
 
-	snprintf(fullname, sizeof(fullname), "%s.%s", "IQ-WM", name);
+	snprintf(fullname, sizeof(fullname), "%s.%s", "IQWM", name);
 	fullname[sizeof(fullname) - 1] = '\0';
 
 	XrmGetResource(db, fullname, "*", &type, &ret);
@@ -2624,15 +2624,15 @@ void load_xresources(void)
 int main(int argc, char *argv[])
 {
 	if (argc == 2 && !strcmp("-v", argv[1]))
-		die("IQ-WM-"VERSION);
+		die("IQWM-"VERSION);
 	else if (argc != 1)
-		die("usage: IQ-WM [-v]");
+		die("usage: IQWM [-v]");
 	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
 		fputs("warning: no locale support\n", stderr);
 	if (!(dpy = XOpenDisplay(NULL)))
-		die("IQ-WM: cannot open display");
+		die("IQWM: cannot open display");
 	if (!(xcon = XGetXCBConnection(dpy)))
-		die("IQ-WM: cannot get xcb connection\n");
+		die("IQWM: cannot get xcb connection\n");
 	checkotherwm();
 	XrmInitialize();
 	load_xresources();

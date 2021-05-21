@@ -1,12 +1,12 @@
 include config.mk
 
-SRC = Drw.c IQ-WM.c Util.c
+SRC = Drw.c IQWM.c Util.c
 OBJ = ${SRC:.c=.o}
 
-all: options IQ-WM
+all: options IQWM
 
 options:
-	@echo IQ-WM build options:
+	@echo IQWM build options:
 	@echo "CFLAGS   = ${CFLAGS}"
 	@echo "LDFLAGS  = ${LDFLAGS}"
 	@echo "CC       = ${CC}"
@@ -16,34 +16,34 @@ options:
 
 ${OBJ}: Config.h config.mk
 
-IQ-WM: ${OBJ}
+IQWM: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
 clean:
-	rm -f IQ-WM ${OBJ} IQ-WM-${VERSION}.tar.gz *.orig *.rej
+	rm -f IQWM ${OBJ} IQWM-${VERSION}.tar.gz *.orig *.rej
 
 dist: clean
-	mkdir -p IQ-WM-${VERSION}
+	mkdir -p IQWM-${VERSION}
 	cp -R Makefile config.mk\
-		IQ-WM.1 Drw.h Util.h ${SRC} Transient.c IQ-WM-${VERSION}
-	tar -cf IQ-WM-${VERSION}.tar IQ-WM-${VERSION}
-	gzip IQ-WM-${VERSION}.tar
-	rm -rf IQ-WM-${VERSION}
+		IQWM.1 Drw.h Util.h ${SRC} Transient.c IQWM-${VERSION}
+	tar -cf IQWM-${VERSION}.tar IQWM-${VERSION}
+	gzip IQWM-${VERSION}.tar
+	rm -rf IQWM-${VERSION}
 
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
-	cp -f IQ-WM ${DESTDIR}${PREFIX}/bin
-	chmod 755 ${DESTDIR}${PREFIX}/bin/IQ-WM
+	cp -f IQWM ${DESTDIR}${PREFIX}/bin
+	chmod 755 ${DESTDIR}${PREFIX}/bin/IQWM
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
-	sed "s/VERSION/${VERSION}/g" < IQ-WM.1 > ${DESTDIR}${MANPREFIX}/man1/IQ-WM.1
-	chmod 644 ${DESTDIR}${MANPREFIX}/man1/IQ-WM.1
-	mkdir -p ${DESTDIR}${PREFIX}/share/IQ-WM
-	cp -f IQ-IS.mom ${DESTDIR}${PREFIX}/share/IQ-WM
-	chmod 644 ${DESTDIR}${PREFIX}/share/IQ-WM/IQ-IS.mom
+	sed "s/VERSION/${VERSION}/g" < IQWM.1 > ${DESTDIR}${MANPREFIX}/man1/IQWM.1
+	chmod 644 ${DESTDIR}${MANPREFIX}/man1/IQWM.1
+	mkdir -p ${DESTDIR}${PREFIX}/share/IQWM
+	cp -f IQScript.mom ${DESTDIR}${PREFIX}/share/IQWM
+	chmod 644 ${DESTDIR}${PREFIX}/share/IQWM/IQScript.mom
 
 uninstall:
-	rm -f ${DESTDIR}${PREFIX}/bin/IQ-WM\
-		${DESTDIR}${PREFIX}/share/IQ-WM/IQ-IS.mom\
-		${DESTDIR}${MANPREFIX}/man1/IQ-WM.1
+	rm -f ${DESTDIR}${PREFIX}/bin/IQWM\
+		${DESTDIR}${PREFIX}/share/IQWM/IQScript.mom\
+		${DESTDIR}${MANPREFIX}/man1/IQWM.1
 
 .PHONY: all options clean dist install uninstall

@@ -1,13 +1,13 @@
-.TH IQ-WM 1 IQ-WM\-VERSION
+.TH IQWM 1 IQWM\-VERSION
 .SH NAME
-IQ-WM \- intelligentquantum window manager
+IQWM \- intelligentquantum window manager
 .SH SYNOPSIS
-.B IQ-WM
+.B IQWM
 .RB [ \-v ]
 .SH DESCRIPTION
-IQ-WM is a intelligentquantum window manager for X.
+IQWM is a intelligentquantum window manager for X.
 .P
-IQ-WM "orders" windows based on recency and primacy, while IQ-WM layouts may
+IQWM "orders" windows based on recency and primacy, while IQWM layouts may
 change, the most recent "master" window is shown in the most prominent
 position. There are bindings for cycling through and promoting windows to the
 master position.
@@ -24,11 +24,11 @@ color. The tags of the focused window are indicated with a filled square in the
 top left corner.  The tags which are applied to one or more windows are
 indicated with an empty square in the top left corner.
 .P
-IQ-WM draws a small border around windows to indicate the focus state.
+IQWM draws a small border around windows to indicate the focus state.
 .P
 .I
 libxft-bgra
-should be installed for this build of IQ-WM. Arch users may install it via the
+should be installed for this build of IQWM. Arch users may install it via the
 AUR. Color characters and emoji are enabled, but these will cause crashes
 without the fix
 .I
@@ -66,7 +66,7 @@ Start terminal,
 .TP
 .B Super\-d
 Spawn
-.BR IQ-MENU(1)
+.BR IQMenu(1)
 for launching other programs.
 .TP
 .B Super\-b
@@ -169,7 +169,7 @@ View all windows with any tag.
 Add/remove all windows with nth tag to/from the view.
 .TP
 .B Super\-Shift\-q
-Quit IQ-WM.
+Quit IQWM.
 .TP
 .B Mod1\-Control\-Shift\-q
 Menu to refresh/quit/reboot/shutdown.
@@ -184,17 +184,17 @@ Toggles focused window between floating and tiled state.
 .B Super\-Right click
 Resize focused window while dragging. Tiled windows will be toggled to the floating state.
 .SH CUSTOMIZATION
-IQ-WM is customized by creating a custom config.h and (re)compiling the source
+IQWM is customized by creating a custom config.h and (re)compiling the source
 code. This keeps it fast, secure and simple.
 .SH SIGNALS
 .TP
 .B SIGHUP - 1
-Restart the IQ-WM process.
+Restart the IQWM process.
 .TP
 .B SIGTERM - 15
-Cleanly terminate the IQ-WM process.
+Cleanly terminate the IQWM process.
 .SH SEE ALSO
-.BR IQ-MENU (1),
+.BR IQMenu (1),
 .BR st (1)
 .SH ISSUES
 Java applications which use the XToolkit/XAWT backend may draw grey windows
