@@ -14,12 +14,12 @@ static int smartgaps                = 0;        /* 1 means no outer gap when the
 static int showbar                  = 1;        /* 0 means no bar */
 static int topbar                   = 1;        /* 0 means bottom bar */
 static char *fonts[]                = { "monospace:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true"  };
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#444444";
+static char normbgcolor[]           = "#1C1E26";
+static char normbordercolor[]       = "#2E303E";
 static char normfgcolor[]           = "#bbbbbb";
-static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#770000";
-static char selbgcolor[]            = "#005577";
+static char selfgcolor[]            = "#FDF0ED";
+static char selbordercolor[]        = "#6C6F93";
+static char selbgcolor[]            = "#6C6F93";
 static char *colors[][3] =
 {
     /*               fg           bg           border   */
@@ -204,10 +204,11 @@ static Key keys[] =
 	{ MODKEY,			                        XK_Page_Down,	        shiftview,	                { .i = +1 } },
 	{ MODKEY|ShiftMask,		                    XK_Page_Down,	        shifttag,	                { .i = +1 } },
 	{ MODKEY,			                        XK_Insert,	            spawn,		                SHCMD("xdotool type $(grep -v '^#' ~/.local/share/IQ-IS/snippets | IQ-MENU -i -l 50 | cut -d' ' -f1)") },
-	{ MODKEY,			                        XK_F1,		            spawn,		                SHCMD("groff -mom /usr/local/share/IQ-WM/IQ-IS.mom -Tpdf | zathura -") },
-	{ MODKEY,			                        XK_F2,		            spawn,		                SHCMD("tutorialvids") },
-	{ MODKEY,			                        XK_F3,		            spawn,		                SHCMD("displayselect") },
-	{ MODKEY,			                        XK_F4,		            spawn,		                SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof IQ-BLOCKS)") },
+	{ MODKEY,			                        XK_F1,		            spawn,		                SHCMD("setxkbmap us") },
+	{ MODKEY,			                        XK_F2,		            spawn,		                SHCMD("setxkbmap ir") },
+	{ MODKEY,			                        XK_F2,		            spawn,		                SHCMD("setxkbmap de") },
+	{ MODKEY,			                        XK_F4,		            spawn,		                SHCMD("displayselect") },
+	{ MODKEY,			                        XK_F5,		            spawn,		                SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof IQ-BLOCKS)") },
 	{ MODKEY,			                        XK_F6,		            spawn,		                SHCMD("torwrap") },
 	{ MODKEY,			                        XK_F7,		            spawn,		                SHCMD("td-toggle") },
 	{ MODKEY,			                        XK_F8,		            spawn,		                SHCMD("mw -Y") },
@@ -222,11 +223,8 @@ static Key keys[] =
 	{ MODKEY|ShiftMask,		                    XK_Print,	            spawn,		                SHCMD("iqmenurecord kill") },
 	{ MODKEY,			                        XK_Delete,	            spawn,		                SHCMD("iqmenurecord kill") },
 	{ MODKEY,			                        XK_Scroll_Lock,	        spawn,		                SHCMD("killall screenkey || screenkey &") },
-    { MODKEY|ShiftMask,                         XK_z,                   spawn,                    	SHCMD("setxkbmap de") },
-    { MODKEY|ShiftMask,                         XK_x,                   spawn,                      SHCMD("setxkbmap us") },
-    { MODKEY|ShiftMask,                         XK_Delete,              spawn,                      SHCMD("setxkbmap ir") },
 
-    { 0,				                        XK_Print,	            spawn,		                SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+    { 0,				                        XK_Print,	            spawn,		                SHCMD("maim -s ~/Pictures/Screenshot/IQ-$(date '+%y%m%d-%H%M-%S').png | xclip -selection clipboard -t image/png") },
     { 0,                                        XF86XK_AudioMute,		spawn,		                SHCMD("pamixer -t; kill -44 $(pidof IQ-BLOCKS)") },
 	{ 0,                                        XF86XK_AudioRaiseVolume,spawn,		                SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof IQ-BLOCKS)") },
 	{ 0,                                        XF86XK_AudioLowerVolume,spawn,		                SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof IQ-BLOCKS)") },
